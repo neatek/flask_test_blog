@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import LoginManager, login_user, logout_user, login_required
-from models import User
+from app.models import User
 
 auth_app = Blueprint("auth_app", __name__)
 login_manager = LoginManager()

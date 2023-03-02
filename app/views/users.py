@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, request
 from werkzeug.exceptions import NotFound
-from models import User
+from app.models.user import User
 
 users_app = Blueprint("users_app", __name__)
 USERS = {
