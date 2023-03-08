@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, LargeBinary
 from flask_login import UserMixin
+from sqlalchemy.orm import relationship
 from app.models.database import db
 from app.security import flask_bcrypt
 
@@ -17,6 +18,7 @@ class User(db.Model, UserMixin):
     last_name = Column(
         String(120), unique=False, nullable=False, default="", server_default=""
     )
+    author = relationship("Author", uselist=False, back_populates="user")
 
     @property
     def password(self):
