@@ -7,17 +7,19 @@ from app.views.articles import articles_app
 from app.views.auth import login_manager, auth_app
 from app.views.authors import authors_app
 from app.models.database import db
+from app.admin import admin
 from app.security import flask_bcrypt
 
 
 app = Flask(__name__)
 cfg_name = os.environ.get("CONFIG_NAME") or "DevConfig"
 app.config.from_object(f"app.configs.{cfg_name}")
+
 db.init_app(app)
 login_manager.init_app(app)
 migrate = Migrate(app, db)
 flask_bcrypt.init_app(app)
-
+admin.init_app(app)
 
 app.register_blueprint(auth_app, url_prefix="/auth")
 app.register_blueprint(users_app, url_prefix="/users")
