@@ -6,6 +6,14 @@ Article #{{ article.id }}: {{ article.title }}
 <h1>{{ article.title }}</h1>
 <div>
     <p>{{ article.body }}</p>
+    {% if article.tags %}
+    <div>Tags:</div>
+    <ul>
+    {% for tag in article.tags %}
+    <li>{{ tag.name }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
     <div>Published {{ article.dt_created }}</div>
     <div>by {{ article.author.user.username }}</div>
 </div>
